@@ -1,0 +1,38 @@
+nav{
+    height: 55px;
+    width: 100%;
+    background-color: white;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    box-shadow: 2px 2px 5px #888888;
+    display: flex;
+    align-items: center;
+}
+
+nav > ul{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 5%;
+}
+li{
+    list-style: none;
+}
+a{
+    color: #232426 !Important;
+    font-size: 1.3rem;
+    padding: 5px 10px;
+    text-decoration: none !Important;
+    font-weight: 400;
+}
+.logo{
+    font-weight: 500;
+    background-color: rgb(85, 85, 248);
+}
+li :hover{
+    background-color: aliceblue;
+}

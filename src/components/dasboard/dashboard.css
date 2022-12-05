@@ -1,0 +1,100 @@
+main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: antiquewhite;
+    padding-top: 10px;
+    gap: 10px;
+}
+.left{
+    background-color: aliceblue;
+    width: 35%;
+    height: fit-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 5px #888888;
+    position: sticky;
+    top: 65px;
+}
+.main{
+    background-color: aliceblue;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+/* ------------------------------------------ LEFT ------------------------------------------ */
+.part{
+    background-color: rgb(215, 224, 230);
+    width: 95%;
+    padding: 10px;
+    margin: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-position: center;
+    margin: 10px;
+}
+.left .box{
+    width: 70%;
+    margin-top: 5px;
+    color: rgb(177, 14, 14);
+}
+#stars{
+    color: rgb(203, 224, 12);
+}
+
+/* ---------- LEFT BOTTOM ----------*/
+.left .search{
+    border-radius: 5px;
+    padding: 5px;
+    width: 95%;
+    border: 1px solid white;
+    margin-bottom: 5px;;
+}
+.left .link{
+    border-radius: 5px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    margin: 2px 0;
+}
+.link img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    margin: 0 5px 0 0;
+}
+.link p{
+    margin: 0;
+}
+.link:hover{
+    background-color: rgb(162, 180, 190);
+
+}
+
+@media only screen and (max-width: 700px) {
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    .left{
+        width: 100%;
+        position: static;
+    }
+    .main{
+        width: 100%;
+    }    
+}

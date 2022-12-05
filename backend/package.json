@@ -1,0 +1,40 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Project for React",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzirshehryar/Web_React_Project.git"
+  },
+  "keywords": [
+    "Social",
+    "Media",
+    "App",
+    "for",
+    "Veteran"
+  ],
+  "author": "Wazir Shehryar Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vzirshehryar/Web_React_Project/issues"
+  },
+  "homepage": "https://github.com/vzirshehryar/Web_React_Project#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.4",
+    "nodemon": "^2.0.20"
+  }
+}

@@ -1,0 +1,53 @@
+#center{
+    padding: 5px;
+    background-color: aliceblue;
+    width: 100%; 
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.makePost{
+    background-color: rgb(215, 224, 230);
+    margin-top: 10px;
+    width: 97%;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post{
+    background-color: rgb(215, 224, 230);
+    margin-top: 10px;
+    width: 97%;
+    border-radius: 10px;
+    min-height: 100vh;
+    padding: 5px;
+}
+
+/* --------- MAKE POST --------- */
+.makePost > div{
+    width: 95%;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+.inpuPost{
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+.icon-container > button{
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 4px 25px;
+    border-radius: 5px;
+} 
+.icon-container i{
+    padding: 4px 10px
+}
+
