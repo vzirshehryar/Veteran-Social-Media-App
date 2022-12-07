@@ -41,7 +41,10 @@ const Veteran = new mongoose.Schema({
       ref: "Veteran"
     }
   ],
-  stars: Number
+  stars: Number,
+  type: String,
+  category: String,
+  hobby: String
 });
 
 Veteran.pre("save", async function(next){

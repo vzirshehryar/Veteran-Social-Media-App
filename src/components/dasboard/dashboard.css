@@ -79,6 +79,17 @@ img{
 }
 .link p{
     margin: 0;
+    font-size: 0.9rem;
+}
+.link .type{
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+.link > button{
+    margin-right: 0px;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
 }
 .link:hover{
     background-color: rgb(162, 180, 190);

@@ -13,6 +13,7 @@ export default function RegisterForm() {
     const [password, setPassword] = useState("");
     const [stars, setStars] = useState(0);
     const [type, setType] = useState("Veteran");
+    const [hobby, setHobby] = useState("Sports");
     const [error, setError] = useState("");
 
     const handleSubmit = (event)=>{
@@ -25,8 +26,9 @@ export default function RegisterForm() {
             "name": userName,
             "email": email,
             "password": password,
-            // "stars": stars,
-            // "type": type
+            "stars": stars,
+            "type": type,
+            "hobby": hobby
         }
 
         fetch("http://localhost:4000/veteran/register", 
@@ -57,6 +59,7 @@ export default function RegisterForm() {
     <form onSubmit={handleSubmit}>
         <input type="userName" name="userName" placeholder="User Name"value={userName} onChange={(e)=>setUserName(e.target.value)}/>
         <input type="email" name="email" placeholder="Email"value={email} onChange={(e)=>setEmail(e.target.value)}/>
+        <input type="password" name="password" placeholder="Password"value={password} onChange={(e)=>setPassword(e.target.value)}/>
         <input type="number" name="number" placeholder="Stars" value={stars} onChange={(e)=>setStars(e.target.value)}/>
         <div className='radio'>
             <div>
@@ -68,7 +71,17 @@ export default function RegisterForm() {
                 <label htmlFor="css">Organization</label><br/>
             </div>
         </div>
-        <input type="password" name="password" placeholder="Password"value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        <div>
+            <span>Your Hobby: </span>
+            <select id="hobby" defaultValue={"Sports"} onChange={(e)=>setHobby(e.target.value)}>
+                <option value="Sports">Sports</option>
+                <option value="Book Reading">Book Reading</option>
+                <option value="Drawing">Drawing</option>
+                <option value="Charity">Charity</option>
+                <option value="Plantation">Plantation</option>
+                <option value="Public Talk">Public Talk</option>
+            </select>
+        </div>
         <input type="submit" value={"Register"} className="button"/>
         <p style={{color: "red", height: "20px"}}>{error}</p>
     </form>

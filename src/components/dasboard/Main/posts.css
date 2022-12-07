@@ -1,0 +1,54 @@
+#post1{
+    background-color: aliceblue;
+    width: 97%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+#post1 > div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#post1 > div > div{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+#post1 > div > div > img{
+    width: 45px;
+    height: 45px;
+    margin: 5px 10px;
+}
+#post1 > div > button{
+    padding: 5px 20px;
+    border: none;
+    background-color: blue;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#post1 > #post2{
+    width: 100%;
+}
+#post1 > #post2 > img{
+    margin: 5px 10px;
+    background-position: center;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid white ;
+}
+#post1 > .caption{
+    width: 95%;
+    display: flex;
+}
+.caption > p{
+    margin: 0px;
+    font-size: 0.95rem;
+    padding: 3px 0
+}

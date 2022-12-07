@@ -9,12 +9,22 @@ const router = express.Router();
 
 router.post("/register", async (req, res)=>{
     try{
-        const {name, email, password} = req.body;
+        const {name, email, password, type, stars, hobby} = req.body;
         let user = await Veteran.findOne({email});
         if(user)
             return res.status(400).json({success: false, message: "Veteran Already Exist"});
+
+        var category = "";
+        if(type === "Organization") category = "Organization"
+        else if(stars < 25000)   category = "Silver Veteran"
+        else if(stars < 40000)   category = "Ruby Veteran"
+        else if(stars < 50000)   category = "Golden Veteran"
+        else if(stars < 60000)   category = "Diamond Veteran"
+        else if(stars < 65000)   category = "Sapphire Veteran"
+        else if(stars < 70000)   category = "Platinum Veteran"
+        else if(stars >= 70000)   category = "Eternal Sage"
         
-        user = await Veteran.create({name, email, password, avatar:{public_id: "sampleID", url: "sampleURL"}, stars: 500})
+        user = await Veteran.create({name, email, password, avatar:{public_id: "sampleID", url: "sampleURL"}, type, stars, category, hobby})
 
         const token = await user.generateToken();
         const options = {
@@ -77,10 +87,10 @@ router.get("/logout", async (req, res) => {
     }
 })
 
-router.get("/follow/:id", isAuthenticated,  async (req, res)=>{
+router.get("/follow/:meId/:id",  async (req, res)=>{
     try{
         const user = await Veteran.findById(req.params.id);
-        const me = await Veteran.findById(req.user._id);
+        const me = await Veteran.findById(req.params.meId);
 
         if(!user)
             return res.status(400).json({success: false, message: "Veteran Not Found"});
@@ -211,7 +221,7 @@ router.get("/veteranProfile/:id", isAuthenticated, async (req, res) => {
     }
 })
 
-router.get("/allVeteran", isAuthenticated, async (req, res) => {
+router.get("/allVeteran",  async (req, res) => {
     try{
         const user = await Veteran.find({});
 

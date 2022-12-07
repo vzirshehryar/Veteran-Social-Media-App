@@ -1,9 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 
-function Posts() {
+import './posts.css'
+
+function Posts(props) {
+  const me = useSelector((state) => state.userId);
+  const [like, setLike] = useState(false);
+  const [likeS, setLikeS] = useState({backgroundColor: "red"})
+
+  const liked = () =>{
+    // const data =fetch(`http://localhost:4000/veteran/follow/${me._id}/${props.ownerId}`)
+    // .then(res => res.json())
+    // .then(data => data)
+    // .catch(err => console.log(err));
+    // if(data){
+      if(!like){
+        setLikeS({backgroundColor: "blue"})
+        setLike(true)
+        console.log(like);
+      }
+      else{
+        setLikeS({backgroundColor: "red"})
+        setLike(false)
+        console.log(like);
+      }
+    // }
+  }
+
   return (
-    <div>
-      Posts
+    <div id="post1">
+      <div>
+        <div>
+          <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-spot-a-fake-online-review-1661334852.jpg?resize=980:*' alt='shery'/>
+          <h5><b>{props.ownerName}</b></h5>
+        </div>
+        <button onClick={liked} style={likeS}>Like</button>
+      </div>
+      <div id='post2'>
+        <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-spot-a-fake-online-review-1661334852.jpg?resize=980:*' alt='shery'/>
+      </div>
+      <div className='caption'>
+        <p>{props.postCaption}</p>
+      </div>
     </div>
   )
 }

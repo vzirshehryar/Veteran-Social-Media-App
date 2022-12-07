@@ -13,7 +13,7 @@ function Dashboard() {
 	useEffect(()=>{
 		if(!myId){
 			console.log("khali ha")
-			// navigate("/login");
+			navigate("/login");
 		}
 	})
 

@@ -7,7 +7,7 @@ import {isAuthenticated} from './../middlewares/auth.js';
 
 const router = express.Router();
 
-router.post("/post/upload", isAuthenticated, async (req, res)=>{
+router.post("/post/upload/:me", async (req, res)=>{
     try{
         const newPostData = {
             caption: req.body.caption,
@@ -15,12 +15,12 @@ router.post("/post/upload", isAuthenticated, async (req, res)=>{
                 public_id: "req.body.public_id",
                 url: "req.body.url"
             },
-            owner: req.user._id
+            owner: req.params.me
         }
 
         const newPost = await Post.create(newPostData);
 
-        const user = await Veteran.findById(req.user._id);
+        const user = await Veteran.findById(req.params.me);
         user.posts.push(newPost._id);
         await user.save();
 
@@ -32,21 +32,21 @@ router.post("/post/upload", isAuthenticated, async (req, res)=>{
     }
 })
 
-router.get("/post/:id", isAuthenticated, async (req, res) => {
+router.get("/post/:me/:id", async (req, res) => {
     try{
         const post = await Post.findById(req.params.id);
         // console.log(post._id);
         if(!post)
             return res.status(404).json({success: false, message: "Post Not Found"});
         
-        if(post.likes.includes(req.user._id)){
-            const index = post.likes.indexOf(req.user._id);
+        if(post.likes.includes(req.params.me)){
+            const index = post.likes.indexOf(req.params.me);
             post.likes.splice(index, 1);
             await post.save();
             return res.status(200).json({success: true, message: "Post Unliked"});
         }
         else{
-            post.likes.push(req.user._id);
+            post.likes.push(req.params.me);
             await post.save();
             return res.status(200).json({success: true, message: "Post liked"});
         }
@@ -81,53 +81,17 @@ router.delete("/post/:id", isAuthenticated, async (req, res) => {
     }
 });
 
-router.get("/post", isAuthenticated, async (req, res)=>{
+router.get("/posts/:id", async (req, res)=>{  // this is changed
     try{
-        const user = await Veteran.findById(req.user._id);
+        const user = await Veteran.findById(req.params.id);
 
         const posts = await Post.find({
             owner: {
                 $in: user.followings
             }
-        })
+        }).populate("owner likes comments.user")
 
-        res.status(200).json({success: true, posts: posts});
-    }
-    catch(error){
-        res.status(500).json({success: false, message: error.message});
-    }
-})
-
-router.post("/addComment/:id", isAuthenticated, async (req, res)=>{
-    try{
-        const post = await Post.findById(req.params.id);
-        if(!post)
-            res.status(400).json({success: false, message: "No Post Found"});
-
-        post.comments.push({
-            user: req.user._id,
-            comment: req.body.comment
-        })   
-        await post.save();
-
-        res.status(200).json({success: true, message: "comment added"});
-    }
-    catch(error){
-        res.status(500).json({success: false, message: error.message});
-    }
-})
-
-router.post("/deleteComment/:id", isAuthenticated, async (req, res)=>{
-    try{
-        // const post = await Post.findById(req.params.id);
-        // if(!post)
-        //     res.status(400).json({success: false, message: "No Post Found"});
-
-        // if(post.owner.toString() === req.user._id.toString())
-
-        // await post.save();
-
-        // res.status(200).json({success: true, message: "comment added"});
+        res.status(200).json({success: true, posts: posts.reverse()});
     }
     catch(error){
         res.status(500).json({success: false, message: error.message});
