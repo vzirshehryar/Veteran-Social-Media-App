@@ -8,6 +8,7 @@ import Login from './components/login/Login'
 import Dashboard from './components/dasboard/Dashboard'
 import Register from './components/register/Register';
 import Profile from './components/dasboard/Profile/Profile';
+import Events from './components/SocialEvents/Events';
 
 function App() {
   
@@ -28,6 +29,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/' element={<Dashboard/>}/>
+        <Route path='/events' element={<Events/>}/>
         <Route path='/veteran/:id' element={<Profile/>}/>
       </Routes>
     </BrowserRouter>

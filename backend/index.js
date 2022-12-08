@@ -23,11 +23,13 @@ app.get("/", (req, res)=>{
 import authentication from './routes/authentication.js';
 import post from './routes/post.js';
 import veteran from './routes/veteran.js';
+import event from './routes/event.js'
 
 // app.use("/veteran", authentication);
 
 app.use("/veteran", post);
 app.use("/veteran", veteran);
+app.use("/veteran", event);
 
 app.listen(PORT || 4000, ()=>{
     console.log(`listening at port ${PORT || 4000}`)

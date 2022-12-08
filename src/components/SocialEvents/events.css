@@ -1,0 +1,92 @@
+.event{
+    width: 100vw;
+    min-height: 100vh;
+    background-color:antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event > .makeEvent{
+    width: 80%;
+    height: fit-content;
+    background-color: aliceblue;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+}
+.oneEvent{
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 80%;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event > .oneEvent > .events{
+    width: 95%;
+    border-radius: 5px;
+    background-color: white;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    margin: 5px 0px;
+    padding: 10px;
+}
+.event > .oneEvent > .events > .content {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    align-items: center;
+    padding: 20px 20px; 
+    background-color: aliceblue;
+}
+.event > .oneEvent > .events > .content > div {
+    width: 100%;
+    margin: 5px 0px;
+    border: 1px solid blanchedalmond;
+}
+.event > .oneEvent > .events > .btns {
+    width: 95%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.events > div > button{
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.by{
+    font-weight: 500;
+}
+.makeEvent input{
+    width: 95%;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+.makeEvent form{
+    width: 100%;
+} 
+.makeEvent  select{
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+} 
+
+@media only screen and (max-width: 700px) {
+    .oneEvent{
+        width: 95%;
+    }    
+    .makeEvent{
+        width: 95%;
+    }    
+}
