@@ -6,9 +6,9 @@ import Event from '../models/Event.js';
 const router = express.Router();
 
 router.post("/event/upload", async (req, res)=>{
-    const {content, owner, location, city, type} = req.body;
+    const {content, owner, location, city, type, stars} = req.body;
     try{
-        const newPostEvent = {content, owner, location, city, type};
+        const newPostEvent = {content, owner, location, city, type, stars};
 
         const newEvent = await Event.create(newPostEvent);
 
@@ -68,7 +68,7 @@ router.post("/attended/:me/:id", async (req, res)=>{
             await event.save();
 
             const user = await Veteran.findById(req.params.me);
-            user.stars = user.stars - 5000;
+            user.stars = user.stars - event.stars;
             await user.save();
 
             return res.status(200).json({success: true, message: "Event UnAttended"});
@@ -78,7 +78,7 @@ router.post("/attended/:me/:id", async (req, res)=>{
             await event.save();
 
             const user = await Veteran.findById(req.params.me);
-            user.stars = user.stars + 5000;
+            user.stars = user.stars + event.stars;
             await user.save();
 
             return res.status(200).json({success: true, message: "Event Attended"});

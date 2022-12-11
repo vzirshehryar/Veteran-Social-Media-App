@@ -18,6 +18,7 @@ const Event = new mongoose.Schema({
 			ref: "Veteran"
 		}
 	],
+	stars: Number,
 });
 
 export default mongoose.model("Event", Event);

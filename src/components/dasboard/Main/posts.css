@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
+    margin: 5px;
 }
 #post1 > div{
     width: 100%;

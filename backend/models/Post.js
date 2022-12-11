@@ -2,9 +2,8 @@ import mongoose from 'mongoose';
 
 const Post = new mongoose.Schema({
 	caption: String,
-	image: {
-		public_id: String,
-		url: String
+	imageUrl: {
+		type: String
 	},
 	owner: {
 		type: mongoose.Schema.Types.ObjectId,

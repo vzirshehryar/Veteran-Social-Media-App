@@ -11,10 +11,7 @@ router.post("/post/upload/:me", async (req, res)=>{
     try{
         const newPostData = {
             caption: req.body.caption,
-            image: {
-                public_id: "req.body.public_id",
-                url: "req.body.url"
-            },
+            imageUrl: req.body.imageUrl,
             owner: req.params.me
         }
 

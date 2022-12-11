@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useSearchParams} from 'react-router-dom'
 
 import './profile.css'
-import Posts from './../Main/Posts'
+// import Posts from './../Main/Posts'
 
 function Profile(props) {
 	const [req, setReq] = useState("Follow");

@@ -18,6 +18,9 @@ export default function LoginForm() {
     const handleSubmit = async (event)=>{
         event.preventDefault();
 
+        if(!email || !password)
+            return setError("All fields are required");
+
         try{
             const options = {
                 method: "POST",

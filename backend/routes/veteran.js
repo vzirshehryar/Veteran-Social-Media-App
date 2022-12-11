@@ -9,7 +9,8 @@ const router = express.Router();
 
 router.post("/register", async (req, res)=>{
     try{
-        const {name, email, password, type, stars, hobby} = req.body;
+        const {name, email, password, type, stars, hobby, image} = req.body;
+    
         let user = await Veteran.findOne({email});
         if(user)
             return res.status(400).json({success: false, message: "Veteran Already Exist"});
@@ -24,7 +25,7 @@ router.post("/register", async (req, res)=>{
         else if(stars < 70000)   category = "Platinum Veteran"
         else if(stars >= 70000)   category = "Eternal Sage"
         
-        user = await Veteran.create({name, email, password, avatar:{public_id: "sampleID", url: "sampleURL"}, type, stars, category, hobby})
+        user = await Veteran.create({name, email, password, image, type, stars, category, hobby})
 
         const token = await user.generateToken();
         const options = {

@@ -43,6 +43,13 @@
     padding: 5px;
     border-radius: 5px;
 }
+.img{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;
+}
 .icon-container > button{
     border: none;
     background-color: blue;
@@ -50,7 +57,5 @@
     padding: 4px 25px;
     border-radius: 5px;
 } 
-.icon-container i{
-    padding: 4px 10px
-}
+
 

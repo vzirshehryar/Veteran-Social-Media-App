@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import './posts.css'
 
 function Posts(props) {
-  const me = useSelector((state) => state.userId);
+  // const me = useSelector((state) => state.userId);
   const [like, setLike] = useState(false);
   const [likeS, setLikeS] = useState({backgroundColor: "red"})
 
@@ -31,13 +31,13 @@ function Posts(props) {
     <div id="post1">
       <div>
         <div>
-          <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-spot-a-fake-online-review-1661334852.jpg?resize=980:*' alt='shery'/>
+          <img src={props.ownerImage} alt='shery'/>
           <h5><b>{props.ownerName}</b></h5>
         </div>
         <button onClick={liked} style={likeS}>Like</button>
       </div>
       <div id='post2'>
-        <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-spot-a-fake-online-review-1661334852.jpg?resize=980:*' alt='shery'/>
+        <img src={props.postImage} alt='shery'/>
       </div>
       <div className='caption'>
         <p>{props.postCaption}</p>

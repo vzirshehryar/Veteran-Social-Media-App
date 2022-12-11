@@ -82,11 +82,45 @@
     margin: 5px;
 } 
 
+.makeSearch{
+    background-color: aliceblue;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+
+}
+.makeSearch > div{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.makeSearch > div > input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+}
+.makeSearch > div > div{
+    display: flex;
+    width: fit-content;
+    gap: 5px;
+    margin: 0px 5px;
+}
+.makeSearch > div button{
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 @media only screen and (max-width: 700px) {
-    .oneEvent{
+    .oneEvent, .makeSearch, .makeEvent{
         width: 95%;
     }    
-    .makeEvent{
-        width: 95%;
-    }    
+    .makeSearch > div{
+        flex-direction: column;
+    }
 }

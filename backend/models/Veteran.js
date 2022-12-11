@@ -9,8 +9,7 @@ const Veteran = new mongoose.Schema({
     required: [true, 'Name is required']
   },
   image: {
-    public_id: String,
-    url: String
+    type: String
   },
   email: {
     type: String,

@@ -39,13 +39,13 @@ function Main() {
             <Posts
              key={post._id}
              postId={post._id}
-             postImage={post.image.url}
+             postImage={post.imageUrl}
              postCaption={post.caption}
              likes={post.likes}
              comments={post.comments}
              ownerId={post.owner._id}
              ownerName={post.owner.name}
-            //  ownerImage={post.owner.image.url}
+             ownerImage={post.owner.image}
              />
           ))
         )}        

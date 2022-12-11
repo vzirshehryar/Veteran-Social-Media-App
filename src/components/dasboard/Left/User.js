@@ -1,34 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 function User(props) {
   const me = useSelector((state) => state.userId);
-  var status = false;
+  const [status, setStatus] = useState(false);
 
-  for(let i=0 ; i<me.followings.length ; i++){
-    if(me.followings[i].toString() === props.data._id.toString()){
-      console.log(me.followings[i]);
-      console.log(props.data._id);
-      status = true;
-      break;
+  useEffect(()=>{
+    if(me.followings.includes(props.data._id))
+      setStatus(true);
+    else
+      setStatus(false);
+      // eslint-disable-next-line
+  }, [])
+
+  const follow = async () => {
+    try{
+      if(me._id === props.data._id)
+        if(status === true)
+          return console.log("its you idiot")
+
+      const res = await fetch(`http://localhost:4000/veteran/follow/${me._id}/${props.data._id}`);
+      const data = await res.json()
+      if(data){
+        console.log(data);
+        if(!status)
+          setStatus(true);
+        else
+          setStatus(false);
+      }
     }
-  } 
-
-  const follow = () => {
-    const data =fetch(`http://localhost:4000/veteran/follow/${me._id}/${props.data._id}`)
-    .then(res => res.json())
-    .then(data => data)
-    .catch(err => console.log(err));
-    if(data){
-      
+    catch(err){
+      console.log(err)
     }
   }
 
   return (
     // <Link to={`/veteran/${props.userId}`} className="link">
       <div className="link">
-        <img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-spot-a-fake-online-review-1661334852.jpg?resize=980:*' alt='shery'/>
+        <img src={props.data.image} alt='shery'/>
         <div>
           <p>{props.data.name}</p>
           <p className='type'>{props.data.category}</p>

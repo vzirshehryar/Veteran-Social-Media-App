@@ -6,27 +6,28 @@ function LeftBottom() {
   const [data, setData] = useState([]);
   const [inputText, setInputText] = useState("");
   
-  useEffect(() => {
+  const fetchData = () =>{
     const url = `http://localhost:4000/veteran/allveteran`;
     fetch(url)
       .then((response) => response.json())
       .then((json) => setData(json.user))
       .catch((error) => console.log(error));
+  }
 
-      // eslint-disable-next-line
+  useEffect(() => {
+
+    fetchData();
+
   }, []);
 
-  // useEffect(() => {
-  //   if (data.length !== 0) {
-  //     setIsLoading(false);
-  //   }
-  //   console.log(data);
-  // }, [data]);
+  const clicked = () =>{
+    fetchData();
+  }
 
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
-    console.log(data);
+    // console.log(data);
   };
 
   const filteredData = data.filter((el) => {
@@ -39,7 +40,7 @@ function LeftBottom() {
 
   return (
     <>
-        <input placeholder='Search' className='search' onChange={inputHandler}/>
+        <input placeholder='Search' className='search' onChange={inputHandler} onClick={clicked}/>
         {filteredData.map((item) => (
           <User key={item._id} data={item}/> 
         ))}
